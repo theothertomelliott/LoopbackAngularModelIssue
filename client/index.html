@@ -11,14 +11,14 @@ angular.module('my-app-module',
 angular.module('my-app-module')
   .controller('MyHelloController', ['$scope', 'ModelA','ModelB', function($scope, ModelA,ModelB){
 
-    $scope.instanceA = ModelA.findOne({}, function success(value){
-      var value2 = angular.copy(value);
-      $scope.greeting = value2.$prototype$hello({}, function success(greeting){ console.log(greeting); });
+    $scope.myInstance = ModelA.findOne({}, function success(value){
+      $scope.greeting = value.$prototype$hello({}, function success(){});
     });
+
   }]);
 </script>
 
 <div ng-app="my-app-module" ng-controller="MyHelloController">
   {{ greeting }}<br/>
-  {{ instanceA }}
+  {{ myInstance }}
 </div>
